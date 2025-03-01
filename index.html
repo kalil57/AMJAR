@@ -3,112 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMJAR - Commerce, Tourisme, Voyage</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>AMJAR - Commerce, Tourism & Travel</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background: #007bff; color: white; padding: 15px; text-align: center; }
+        nav { display: flex; justify-content: center; background: #0056b3; padding: 10px; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-size: 18px; }
+        section { padding: 20px; text-align: center; }
+        .lang-switch { position: absolute; top: 15px; right: 20px; }
+    </style>
+    <script>
+        function switchLanguage(lang) {
+            document.querySelectorAll("[data-lang]").forEach(el => {
+                el.style.display = el.getAttribute("data-lang") === lang ? "block" : "none";
+            });
+        }
+    </script>
 </head>
-<body>
-
-    <!-- Header -->
+<body onload="switchLanguage('en')">
     <header>
-        <div class="container">
-            <h1>AMJAR</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                    <li>
-                        <a href="#" id="lang-toggle" class="nav-link">Français</a>
-                    </li>
-                </ul>
-            </nav>
+        <h1>AMJAR</h1>
+        <p>Commerce, Tourism & Travel</p>
+        <div class="lang-switch">
+            <button onclick="switchLanguage('en')">🇬🇧 English</button>
+            <button onclick="switchLanguage('fr')">🇫🇷 Français</button>
         </div>
     </header>
-
-    <!-- Home Section -->
-    <section id="home">
-        <div class="container">
-            <h2>Welcome to AMJAR</h2>
-            <p>Your partner in commerce, tourism, and travel.</p>
+    <nav>
+        <a href="#commerce">Commerce</a>
+        <a href="#tourism">Tourism</a>
+        <a href="#travel">Travel</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <section id="commerce">
+        <div data-lang="en">
+            <h2>Commerce</h2>
+            <p>Explore business opportunities and trade with AMJAR.</p>
+        </div>
+        <div data-lang="fr">
+            <h2>Commerce</h2>
+            <p>Explorez les opportunités commerciales et le commerce avec AMJAR.</p>
         </div>
     </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2>About AMJAR</h2>
-            <p>AMJAR is your trusted guide in the world of commerce, tourism, and travel. We provide a range of services to make your business and travel experiences seamless and enjoyable.</p>
+    <section id="tourism">
+        <div data-lang="en">
+            <h2>Tourism</h2>
+            <p>Discover amazing destinations with AMJAR.</p>
+        </div>
+        <div data-lang="fr">
+            <h2>Tourisme</h2>
+            <p>Découvrez des destinations incroyables avec AMJAR.</p>
         </div>
     </section>
-
-    <!-- Services Section -->
-    <section id="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <ul>
-                <li>Business Consultation</li>
-                <li>Tourism and Travel Packages</li>
-                <li>Destination Guides</li>
-                <li>Event Planning</li>
-            </ul>
+    <section id="travel">
+        <div data-lang="en">
+            <h2>Travel</h2>
+            <p>Plan your perfect trip with AMJAR.</p>
+        </div>
+        <div data-lang="fr">
+            <h2>Voyage</h2>
+            <p>Planifiez votre voyage parfait avec AMJAR.</p>
         </div>
     </section>
-
-    <!-- Contact Section -->
     <section id="contact">
-        <div class="container">
+        <div data-lang="en">
             <h2>Contact Us</h2>
-            <form action="mailto:contact@amjar.com" method="post" enctype="text/plain">
-                <input type="text" name="name" placeholder="Your Name" required><br>
-                <input type="email" name="email" placeholder="Your Email" required><br>
-                <textarea name="message" placeholder="Your Message" required></textarea><br>
-                <button type="submit">Send Message</button>
-            </form>
+            <p>Email: contact@amjar.com</p>
+        </div>
+        <div data-lang="fr">
+            <h2>Contactez-nous</h2>
+            <p>Email : contact@amjar.com</p>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 AMJAR. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Toggle language between French and English
-        const langToggle = document.getElementById('lang-toggle');
-        let isFrench = false;
-
-        langToggle.addEventListener('click', () => {
-            if (isFrench) {
-                document.querySelector('h2').textContent = 'Welcome to AMJAR';
-                document.querySelector('#home p').textContent = 'Your partner in commerce, tourism, and travel.';
-                document.querySelector('#about p').textContent = 'AMJAR is your trusted guide in the world of commerce, tourism, and travel. We provide a range of services to make your business and travel experiences seamless and enjoyable.';
-                document.querySelector('#services h2').textContent = 'Our Services';
-                document.querySelector('#services ul').innerHTML = `
-                    <li>Business Consultation</li>
-                    <li>Tourism and Travel Packages</li>
-                    <li>Destination Guides</li>
-                    <li>Event Planning</li>
-                `;
-                langToggle.textContent = 'Français';
-            } else {
-                document.querySelector('h2').textContent = 'Bienvenue sur AMJAR';
-                document.querySelector('#home p').textContent = 'Votre partenaire dans le commerce, le tourisme et les voyages.';
-                document.querySelector('#about p').textContent = 'AMJAR est votre guide de confiance dans le monde du commerce, du tourisme et des voyages. Nous proposons une gamme de services pour rendre vos expériences professionnelles et de voyage fluides et agréables.';
-                document.querySelector('#services h2').textContent = 'Nos Services';
-                document.querySelector('#services ul').innerHTML = `
-                    <li>Consultation d'Affaires</li>
-                    <li>Forfaits Tourisme et Voyages</li>
-                    <li>Guides de Destination</li>
-                    <li>Planification d'Événements</li>
-                `;
-                langToggle.textContent = 'English';
-            }
-            isFrench = !isFrench;
-        });
-    </script>
-
 </body>
 </html>
